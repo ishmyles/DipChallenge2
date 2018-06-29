@@ -1,0 +1,6 @@
+C:\Users\ishmyles\Desktop\SwinnyVetDB\SwinnyVetDB\bin\Debug\SwinnyVetDB.dacpac
+C:\Users\ishmyles\Desktop\SwinnyVetDB\SwinnyVetDB\bin\Debug\SwinnyVetDB.dll
+C:\Users\ishmyles\Desktop\SwinnyVetDB\SwinnyVetDB\bin\Debug\SwinnyVetDB.pdb
+C:\Users\ishmyles\Desktop\SwinnyVetDB\SwinnyVetDB\obj\Debug\SwinnyVetDB.sqlprojAssemblyReference.cache
+C:\Users\ishmyles\Desktop\SwinnyVetDB\SwinnyVetDB\obj\Debug\SwinnyVetDB.dll
+C:\Users\ishmyles\Desktop\SwinnyVetDB\SwinnyVetDB\obj\Debug\SwinnyVetDB.pdb

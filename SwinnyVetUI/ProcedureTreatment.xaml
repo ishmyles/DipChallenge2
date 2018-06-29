@@ -1,0 +1,109 @@
+﻿<Page x:Class="SwinnyVetUI.ProcedureTreatment"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SwinnyVetUI"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ProcedureTreatment">
+
+    <Grid>
+        <Grid Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <!--TAB BUTTONS-->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Button Grid.Row="1" Margin="15" BorderBrush="Black"
+                        FontSize="15" FontWeight="Bold" Content="Treatments" Click="treatmentsBTN_click"/>
+                <Button Grid.Row="2" Margin="15" BorderBrush="Black"
+                        FontSize="15" FontWeight="Bold" Content="Owners" Click="ownersBTN_click"/>
+                <Button Grid.Row="3" Margin="15" BorderBrush="Black"
+                        FontSize="15" FontWeight="Bold" Content="Procedures" Click="proceduresBTN_click"/>
+            </Grid>
+
+            <!--Main Body-->
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="400"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
+                    FontSize="25" FontWeight="Bold" Text="Treatments/Procedure"/>
+
+                <!--Procedures Grid-->
+                <Grid Grid.Row="1" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="400"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <ListView Name="ProcedureLV" Grid.RowSpan="2" Margin="20,20,20,50">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Procedure No" Width="90" DisplayMemberBinding="{Binding ProcedureID}"/>
+                                <GridViewColumn Header="Procedure Name" Width="160" DisplayMemberBinding="{Binding ProcedureDesc}"/>
+                                <GridViewColumn Header="Price" Width="90" DisplayMemberBinding="{Binding ProcedurePrice}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+                    <TextBlock Grid.Column="1" Margin="10,20,90,150"
+                               FontSize="15" Text="Enter Procedure No:"/>
+
+                    <TextBox Name="procedureNoTB" Grid.Column="1" Margin="10,55,170,120"/>
+
+                    <Button Name="searchTreatmentsBTN" Grid.Column="1" Margin="100,55,50,120"
+                        Content="Search" Click="searchTreatmentsBTN_click"/>
+
+                    <Button Name="viewProceduresBTN" Grid.Column="1" Grid.Row="1" Margin="10,100,100,50"
+                            FontSize="15" Content="View Procedures" Click="viewProcedureBTN_click"/>
+                </Grid>
+
+                <!--Treatments Grid-->
+                <Grid Name="TreatmentsGrid" Grid.Row="1" Background="White" Margin="10" Visibility="Hidden">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="550"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <ListView Name="TreatmentsLV" Margin="0,0,0,40">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Pet Name" Width="100" DisplayMemberBinding="{Binding PetName}"/>
+                                <GridViewColumn Header="Owner ID" Width="65" DisplayMemberBinding="{Binding OwnerID}"/>
+                                <GridViewColumn Header="Procedure#" Width="75" DisplayMemberBinding="{Binding ProcedureID}"/>
+                                <GridViewColumn Header="Date" Width="73" DisplayMemberBinding="{Binding TreatmentDate}"/>
+                                <GridViewColumn Header="Treatment Notes" Width="130" DisplayMemberBinding="{Binding TreatmentNotes}"/>
+                                <GridViewColumn Header="Price" Width="70" DisplayMemberBinding="{Binding TreatmentPrice}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+                    <Button Name="backBTN" Grid.Column="1" Margin="5,300,0,40"
+                            Content="Back" Click="backBTN_click"/>
+                </Grid>
+
+                <Border BorderBrush="Black" BorderThickness="1"/>
+            </Grid>
+
+            <Border BorderBrush="Black" BorderThickness="2"/>
+        </Grid>
+    </Grid>
+</Page>

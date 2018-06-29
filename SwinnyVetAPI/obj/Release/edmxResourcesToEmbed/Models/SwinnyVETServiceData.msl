@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SwinnyVETDBModelStoreContainer" CdmEntityContainer="Entities1">
+    <EntitySetMapping Name="Owners">
+      <EntityTypeMapping TypeName="SwinnyVETDBModel.Owner">
+        <MappingFragment StoreEntitySet="Owner">
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="GivenName" ColumnName="GivenName" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pets">
+      <EntityTypeMapping TypeName="SwinnyVETDBModel.Pet">
+        <MappingFragment StoreEntitySet="Pet">
+          <ScalarProperty Name="PetName" ColumnName="PetName" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="PetType" ColumnName="PetType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Procedures">
+      <EntityTypeMapping TypeName="SwinnyVETDBModel.Procedure">
+        <MappingFragment StoreEntitySet="Procedure">
+          <ScalarProperty Name="ProcedureID" ColumnName="ProcedureID" />
+          <ScalarProperty Name="ProcedureDesc" ColumnName="ProcedureDesc" />
+          <ScalarProperty Name="ProcedurePrice" ColumnName="ProcedurePrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Treatments">
+      <EntityTypeMapping TypeName="SwinnyVETDBModel.Treatment">
+        <MappingFragment StoreEntitySet="Treatment">
+          <ScalarProperty Name="PetName" ColumnName="PetName" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+          <ScalarProperty Name="ProcedureID" ColumnName="ProcedureID" />
+          <ScalarProperty Name="TreatmentDate" ColumnName="TreatmentDate" />
+          <ScalarProperty Name="TreatmentNotes" ColumnName="TreatmentNotes" />
+          <ScalarProperty Name="TreatmentPrice" ColumnName="TreatmentPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

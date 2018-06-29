@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[Procedure]
+(
+	[ProcedureID] NVARCHAR(3) NOT NULL,
+	[ProcedureDesc] NVARCHAR(100) NOT NULL,
+	[ProcedurePrice] MONEY NOT NULL
+	CONSTRAINT PK_PROCEDURE PRIMARY KEY (ProcedureID)
+	CONSTRAINT CHK_PRICE CHECK(ProcedurePrice > $0)
+)

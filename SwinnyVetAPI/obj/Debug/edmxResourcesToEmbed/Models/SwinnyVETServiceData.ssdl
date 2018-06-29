@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SwinnyVETDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Owner">
+    <Key>
+      <PropertyRef Name="OwnerID" />
+    </Key>
+    <Property Name="OwnerID" Type="nvarchar" MaxLength="4" Nullable="false" />
+    <Property Name="GivenName" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Surname" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="PhoneNo" Type="nvarchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pet">
+    <Key>
+      <PropertyRef Name="PetName" />
+      <PropertyRef Name="OwnerID" />
+    </Key>
+    <Property Name="PetName" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="OwnerID" Type="nvarchar" MaxLength="4" Nullable="false" />
+    <Property Name="PetType" Type="nvarchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Procedure">
+    <Key>
+      <PropertyRef Name="ProcedureID" />
+    </Key>
+    <Property Name="ProcedureID" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="ProcedureDesc" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ProcedurePrice" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Treatment">
+    <Key>
+      <PropertyRef Name="PetName" />
+      <PropertyRef Name="OwnerID" />
+      <PropertyRef Name="ProcedureID" />
+      <PropertyRef Name="TreatmentDate" />
+    </Key>
+    <Property Name="PetName" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="OwnerID" Type="nvarchar" MaxLength="4" Nullable="false" />
+    <Property Name="ProcedureID" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="TreatmentDate" Type="date" Nullable="false" />
+    <Property Name="TreatmentNotes" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TreatmentPrice" Type="money" />
+  </EntityType>
+  <Association Name="FK_OWNER_PET">
+    <End Role="Owner" Type="Self.Owner" Multiplicity="1" />
+    <End Role="Pet" Type="Self.Pet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Owner">
+        <PropertyRef Name="OwnerID" />
+      </Principal>
+      <Dependent Role="Pet">
+        <PropertyRef Name="OwnerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PET_TREATMENT">
+    <End Role="Pet" Type="Self.Pet" Multiplicity="1" />
+    <End Role="Treatment" Type="Self.Treatment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pet">
+        <PropertyRef Name="PetName" />
+        <PropertyRef Name="OwnerID" />
+      </Principal>
+      <Dependent Role="Treatment">
+        <PropertyRef Name="PetName" />
+        <PropertyRef Name="OwnerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PROCEDURE_TREATMENT">
+    <End Role="Procedure" Type="Self.Procedure" Multiplicity="1" />
+    <End Role="Treatment" Type="Self.Treatment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Procedure">
+        <PropertyRef Name="ProcedureID" />
+      </Principal>
+      <Dependent Role="Treatment">
+        <PropertyRef Name="ProcedureID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SwinnyVETDBModelStoreContainer">
+    <EntitySet Name="Owner" EntityType="Self.Owner" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pet" EntityType="Self.Pet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Procedure" EntityType="Self.Procedure" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Treatment" EntityType="Self.Treatment" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_OWNER_PET" Association="Self.FK_OWNER_PET">
+      <End Role="Owner" EntitySet="Owner" />
+      <End Role="Pet" EntitySet="Pet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PET_TREATMENT" Association="Self.FK_PET_TREATMENT">
+      <End Role="Pet" EntitySet="Pet" />
+      <End Role="Treatment" EntitySet="Treatment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PROCEDURE_TREATMENT" Association="Self.FK_PROCEDURE_TREATMENT">
+      <End Role="Procedure" EntitySet="Procedure" />
+      <End Role="Treatment" EntitySet="Treatment" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
